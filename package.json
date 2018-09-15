@@ -8,9 +8,13 @@
   },
   "dependencies": {
     "firebase": "^5.4.2",
+    "metro-bundler": "^0.22.1",
     "native-base": "^2.8.0",
-    "react": "16.4.1",
-    "react-native": "0.56.0"
+    "react": "^16.4.1",
+    "react-native": "^0.56.0",
+    "react-native-maps": "*",
+    "react-native-update": "^5.1.2",
+    "react-navigation": "^1.5.13"
   },
   "devDependencies": {
     "babel-jest": "23.4.2",

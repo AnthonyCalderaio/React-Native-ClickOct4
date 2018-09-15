@@ -1,21 +1,35 @@
-/**
- * Sample React Native App
+/**changed gradle/wrapper/gradle-wrapper.properties: from gradle-3.5.1-all.zip
+ * 
+ * $ brew reinstall watchman
+ * 
  * https://github.com/facebook/react-native
  *
  * @format
  * @flow
+ * 
+ * ------ command line installs: -------
+ * $ brew reinstall watchman
+ * # npm install react-native-maps --save
+ * 
+ * 1) gem install cocoapods
+ * 2) $ cd ios
+ * 3) $ pod init
+ * 4) (inside ios folder) $ pod install
+ * 
+ *  react-native unlink react-native-maps && react-native link react-native-maps
+ * 
+ * for pods:
+ * $ cd ios
+ * $ pod init
+ * $ pod update
+ * 
+ * 
+ * 
  */
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import * as firebase from 'firebase';
-
-const firebaseConfig = {
-  
-};
-
-firebase.initializeApp(firebaseConfig);
-import {Container, Content, Header,Form, Input, Item, Button, Label} from 'native-base';
+import {StackNavigator} from 'react-navigation';
 
 
 const instructions = Platform.select({
@@ -26,92 +40,26 @@ const instructions = Platform.select({
 });
 
 
+import LoginScreen from '/Users/anthony/Desktop/Manifest/App1/src/screens/LoginScreen.js';
+import SignUpScreen from '/Users/anthony/Desktop/Manifest/App1/src/screens/SignUpScreen.js'
+import HomeScreen from '/Users/anthony/Desktop/Manifest/App1/src/screens/HomeScreen.js'
+
+const AppStackNavigator = new StackNavigator({
+  LoginScreen: {screen: LoginScreen}
+  ,SignUpScreen: {screen: SignUpScreen}
+  ,HomeScreen: {screen: HomeScreen}
+})
+
 export default class App extends React.Component {
-
-  constructor(props){
-    super(props)
-
-    this.state = ({
-      email: '',
-      password: ''
-    })
-  }
-
-  signUpUser = (email, password) => {
-    try{
-      if(this.state.password.length<6)
-      {
-        alert["Please enter atleast 6 characters"]
-        return;
-      }
-      firebase.auth().createUserWithEmailAndPassword(email,password)
-    }
-    catch(error){
-      console.log(error.toString())
-    }
-  }
-
-  logInUser = (email, password) => {
-    try
-    {
-      firebase.auth().signInWithEmailAndPassword(email, password).then(function (user){
-        console.log(user)
-      })
-
-    }
-    catch (error)
-    {
-      console.log(error.toString())
-    }
-  }
-
-
-  render() {
-    return (
-      <Container style={styles.container}>
-        <Form>
-          <Item floatingLabel> 
-            <Label>Email</Label>
-            <Input
-              autoCorrect={false}
-              autoCapitalize='none'
-              onChangeText={(email) => this.setState({email})}
-            />
-          </Item>
-
-          <Item floatingLabel> 
-            <Label>Password</Label>
-            <Input
-            secureTextEntry={true}
-              autoCorrect={false}
-              autoCapitalize='none'
-              onChangeText={(password) => this.setState({password})}
-            />
-          </Item>
-
-         <Button style={{marginTop: 10}}
-          full
-          rounded
-          success
-          onPress ={()=> this.logInUser(this.state.email, this.state.password)}
-         >
-            <Text style={{color: 'white'}}>Login</Text>
-        </Button>
-
-        <Button style={{marginTop: 10}}
-          full
-          rounded
-          primary
-          onPress = {()=> this.signUpUser(this.state.email, this.state.password)}
-         >
-            <Text style={{color: 'white'}}>Sign Up</Text>
-        </Button>
-
-        </Form>
-      </Container>
+  render(){
+    return(
+      <AppStackNavigator/>
     );
   }
+  
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
