@@ -7,13 +7,14 @@
     "test": "jest"
   },
   "dependencies": {
-    "firebase": "^5.4.2",
+    "firebase": "^5.5.0",
     "metro-bundler": "^0.22.1",
     "native-base": "^2.8.0",
-    "react": "^16.4.1",
+    "react": "^16.5.2",
     "react-native": "^0.56.0",
-    "react-native-maps": "*",
+    "react-native-maps": "^0.15.3",
     "react-native-update": "^5.1.2",
+    "react-native-vector-icons": "^5.0.0",
     "react-navigation": "^1.5.13"
   },
   "devDependencies": {

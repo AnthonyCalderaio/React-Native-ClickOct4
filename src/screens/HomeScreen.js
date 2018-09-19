@@ -10,37 +10,50 @@ import {
 import { Icon } from 'native-base';
 import MapView from 'react-native-maps';
 import {StackNavigator} from 'react-navigation';
+import { TabNavigator } from 'react-navigation'
+import  ProfileScreen  from '/Users/anthony/Desktop/Manifest/App1/src/AppTabNavigator/ProfileScreen.js';
+import  ChatScreen  from '/Users/anthony/Desktop/Manifest/App1/src/AppTabNavigator/ChatScreen.js';
+import  BusinessScreen  from '/Users/anthony/Desktop/Manifest/App1/src/AppTabNavigator/BusinessScreen.js';
+import  SocialScreen  from '/Users/anthony/Desktop/Manifest/App1/src/AppTabNavigator/SocialScreen.js';
+import  MapScreen  from '/Users/anthony/Desktop/Manifest/App1/src/AppTabNavigator/MapScreen.js';
 
 
-export default class HomeScreen extends Component {
+
+
+const AppTabNavigator = TabNavigator({
+    ProfileTab: {
+        screen: ProfileScreen
+    },
+    ChatTab: {
+        screen: ChatScreen
+    },BusinessTab: {
+        screen: BusinessScreen
+    },SocialTab: {
+        screen: SocialScreen
+    },MapTab: {
+        screen: MapScreen
+    }
+})
+
+class HomeScreen extends React.Component {
+
+
 
     static navigationOptions = {
-        headerleft: <Icon name="ios-ccamera-outline" style=
-        {{paddingLeft:10}}
-        />,
-        title:"Click",
-        headerRight:<Icon name="chatbubbles" style={{paddingRight:10}}/>
+        
+        title:"Click"
+       
     }
   
 
     render (){
         return (
-            <View>
-                
-                <MapView style = {styles.map}
-                    initialRegion={{
-                        latitude:59.329323499999999,
-                        longitude:18.0685,
-                        latitudeDelta:0.1,
-                        longitudeDelta:0.1
-                    }}
-                >
-                </MapView>
-
-            </View>
+            <AppTabNavigator/>
         );
     }
 }
+export default HomeScreen;
+
 
 const styles = StyleSheet.create({
     container: {

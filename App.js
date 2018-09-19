@@ -47,7 +47,8 @@ import HomeScreen from '/Users/anthony/Desktop/Manifest/App1/src/screens/HomeScr
 const AppStackNavigator = new StackNavigator({
   LoginScreen: {screen: LoginScreen}
   ,SignUpScreen: {screen: SignUpScreen}
-  ,HomeScreen: {screen: HomeScreen}
+  ,HomeScreen: {screen: HomeScreen,
+  navigationOptions: {headerLeft: null}}
 })
 
 export default class App extends React.Component {
