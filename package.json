@@ -12,10 +12,15 @@
     "native-base": "^2.8.0",
     "react": "^16.5.2",
     "react-native": "^0.56.0",
+    "react-native-firebase-phone-auth": "^1.0.4",
     "react-native-maps": "^0.15.3",
+    "react-native-material-switch": "0.0.4",
+    "react-native-swipe-gestures": "^1.0.2",
+    "react-native-switch": "^1.5.0",
     "react-native-update": "^5.1.2",
     "react-native-vector-icons": "^5.0.0",
-    "react-navigation": "^1.5.13"
+    "react-navigation": "^1.5.13",
+    "switch-button-react-native": "^1.0.3"
   },
   "devDependencies": {
     "babel-jest": "23.4.2",

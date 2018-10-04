@@ -11,11 +11,11 @@ import { Icon } from 'native-base';
 import MapView from 'react-native-maps';
 import {StackNavigator} from 'react-navigation';
 import { TabNavigator } from 'react-navigation'
-import  ProfileScreen  from '/Users/anthony/Desktop/Manifest/App1/src/AppTabNavigator/ProfileScreen.js';
-import  ChatScreen  from '/Users/anthony/Desktop/Manifest/App1/src/AppTabNavigator/ChatScreen.js';
-import  BusinessScreen  from '/Users/anthony/Desktop/Manifest/App1/src/AppTabNavigator/BusinessScreen.js';
-import  SocialScreen  from '/Users/anthony/Desktop/Manifest/App1/src/AppTabNavigator/SocialScreen.js';
-import  MapScreen  from '/Users/anthony/Desktop/Manifest/App1/src/AppTabNavigator/MapScreen.js';
+import  ProfileScreen  from '/Users/anthony/Desktop/Manifest/App1/src/SwipeScreens/ProfileScreen.js';
+import  ChatScreen  from '/Users/anthony/Desktop/Manifest/App1/src/SwipeScreens/ChatScreen.js';
+import  BusinessScreen  from '/Users/anthony/Desktop/Manifest/App1/src/SwipeScreens/BusinessScreen.js';
+import  SocialScreen  from '/Users/anthony/Desktop/Manifest/App1/src/SwipeScreens/SocialScreen.js';
+import  MapScreen  from '/Users/anthony/Desktop/Manifest/App1/src/SwipeScreens/MapScreen.js';
 
 
 
@@ -49,6 +49,7 @@ class HomeScreen extends React.Component {
     render (){
         return (
             <AppTabNavigator/>
+            //<MapScreen style={styles.map}/>
         );
     }
 }
@@ -67,10 +68,10 @@ const styles = StyleSheet.create({
 
     },
     map:{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        bottom: 0,
-        right:0
+        position: 'relative',
+        top: 10,
+        left: 10,
+        bottom: 10,
+        right:10
     }
 });

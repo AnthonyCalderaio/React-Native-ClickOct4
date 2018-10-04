@@ -3,7 +3,7 @@
 //Solved:   $npm install react-native-vector-icons --save 
 //Solved... (THEN: react-native run-ios)
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, TouchableHighlight, Alert} from 'react-native';
 import { Icon } from 'native-base';
 import MapView from 'react-native-maps';
 import PropTypes from 'prop-types';
@@ -17,11 +17,15 @@ class MapScreen extends React.Component {
        
     // }
 
+    // _onLongPressButton() {
+    //   Alert.alert('You long-pressed the button!')
+    // }
+    
+    
+
   render() {
     return (
       <View style={styles.container}>
-       
-        
         <MapView
          style={styles.map}
          initialRegion={{

@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View, DeviceEventEmitter, Image,TouchableWithoutFeedback, Keyboard} from 'react-native';
 import * as firebase from 'firebase';
-import {StackNavigator} from 'react-navigation';
-
+// import {StackNavigator} from 'react-navigation';
+// import RNFirebasePhoneAuth from 'react-native-firebase-phone-auth';
+//For image in header
+import Logo from '/Users/anthony/Desktop/Manifest/App1/src/assets/Logo_Black220x220.jpg';
 const firebaseConfig = {
     apiKey: "AIzaSyA7zNV2Y_s3mq4L5usKvT_Sw4cfdzcxdwI",
       authDomain: "clickfirebase-14bb6.firebaseapp.com",
@@ -24,16 +26,39 @@ const instructions = Platform.select({
 
   export default class LoginScreen extends React.Component {
 
+    static navigationOptions = {
+        
+      title:"Login",
+    //For image in header
+    //   headerTitle: (
+    //     <View style={{flex:1, flexDirection:'row', justifyContent:'center'}}>
+    //         <Image
+    //             source={image}
+    //             style={{width:110, height:18}}
+    //         />
+    //     </View>
+    // ),
+
+
+      headerTintColor: "white",
+      headerStyle: {
+        backgroundColor: '#0D0D0D'
+      }
+     
+  }
+
+    
     constructor(props){
       super(props)
-  
+      //window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+
       this.state = ({
         email: '',
         password: ''
       })
     }
 
-    
+
     signUpUser = (email, password) => {
       try{
         if(this.state.password.length<6)
@@ -51,8 +76,15 @@ const instructions = Platform.select({
     logInUser = (email, password) => {
       try
       {
-        firebase.auth().signInWithEmailAndPassword(email, password).then(function (user){
+        //
+        var credential = firebase.auth.PhoneAuthProvider.credential(confirmationResult.verificationId, code);
+        firebase.auth().signInAndRetrieveDataWithCredential(credential);
+        
+
+        firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+        .then(function (confirmationResult){
           console.log(user)
+          window.confirmationResult = confirmationResult;
         })
   
       }
@@ -65,10 +97,17 @@ const instructions = Platform.select({
   
     render() {
       return (
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <Container style={styles.container}>
+        <Image 
+        source={(Logo)}
+        style={styles.Logo}
+        />
           <Form>
-            <Item floatingLabel> 
-              <Label>Email</Label>
+
+           
+            <Item floatingLabel style={{marginTop: 10,marginLeft: 30,marginRight: 30,}}> 
+              <Label>Phone</Label>
               <Input
                 autoCorrect={false}
                 autoCapitalize='none'
@@ -76,7 +115,7 @@ const instructions = Platform.select({
               />
             </Item>
   
-            <Item floatingLabel> 
+            <Item floatingLabel style={{marginTop: 10,marginLeft: 30,marginRight: 30,}}> 
               <Label>Password</Label>
               <Input
               secureTextEntry={true}
@@ -86,7 +125,7 @@ const instructions = Platform.select({
               />
             </Item>
   
-           <Button style={{marginTop: 10}}
+           <Button style={{marginTop: 10,marginLeft: 20,marginRight: 20,}}
             full
             rounded
             success
@@ -95,15 +134,15 @@ const instructions = Platform.select({
               <Text style={{color: 'white'}}>Login</Text>
           </Button>
   
-          <Button style={{marginTop: 10}}
+          <Button style={{marginTop: 10,marginLeft: 20,marginRight: 20,}}
             full
             rounded
             primary
             onPress = {() => this.props.navigation.navigate('SignUpScreen')}
            >
-              <Text style={{color: 'white'}}>Sign Up</Text>
+              <Text style={{color: 'white'}}>Create Account</Text>
           </Button>
-          <Button style={{marginTop: 10}}
+          <Button style={{marginTop: 10,marginLeft: 20,marginRight: 20,}}
             full
             rounded
             primary
@@ -111,9 +150,11 @@ const instructions = Platform.select({
            >
               <Text style={{color: 'white'}}>Home(Test)</Text>
           </Button>
+          
   
           </Form>
         </Container>
+        </TouchableWithoutFeedback>
       );
     }
   }
@@ -121,9 +162,9 @@ const instructions = Platform.select({
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#0D0D0D',
       justifyContent: 'center',
-      padding: 10
+      
     },
     welcome: {
       fontSize: 20,
@@ -135,5 +176,14 @@ const instructions = Platform.select({
       color: '#333333',
       marginBottom: 5,
     },
+    Logo: {
+      
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginLeft:75,
+      marginRight:75
+
+     
+    }
   });
   

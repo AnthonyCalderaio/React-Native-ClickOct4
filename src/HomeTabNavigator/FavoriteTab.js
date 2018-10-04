@@ -1,20 +1,29 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
+import { Icon } from 'native-base';
 
 
+class FavoriteTab extends React.Component {
 
-class SocialScreen extends React.Component {
+  static navigationOptions = {
+    // tabBarIcon: ({tintColor})=> (
+    //     <Icon name="
+    //   ios-airplane" style ={{color: tintColor}}/>
+    // ) 
+   
+}
+
   render() {
     return (
       <View style={styles.container}>
        
-        <Text>Social</Text>
+        <Text>FavoriteTab</Text>
       </View>
     );
   }
 }
 
-export default SocialScreen;
+export default BusinessScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
